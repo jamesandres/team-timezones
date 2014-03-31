@@ -1,0 +1,27 @@
+{
+  "devDependencies": {
+    "gulp-livereload": "~1.2.0",
+    "tiny-lr": "0.0.5"
+  },
+  "name": "TeamTimezones",
+  "version": "0.0.1",
+  "description": "A widget for viewing team working hours at a glance.",
+  "main": "build/app.js",
+  "dependencies": {
+    "connect": "~2.14.1",
+    "gulp": "~3.5.5",
+    "gulp-coffee": "~1.4.1",
+    "gulp-concat": "~2.1.7",
+    "gulp-sass": "~0.7.1",
+    "gulp-util": "~2.2.14"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jamesandres/team-timezones.git"
+  },
+  "author": "James Andres",
+  "license": "MIT, Copyright (c) 2014 James Andres."
+}

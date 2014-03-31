@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Team Timezones</title>
+
+    <link rel=stylesheet href="app.css">
+    <link rel=stylesheet href="/libs/animate.css/animate.css">
+
+    <script src="/libs/jquery/dist/jquery.js"></script>
+    <script src="/libs/handlebars/handlebars.js"></script>
+    <script src="/libs/lodash/dist/lodash.js"></script>
+
+    <script src="app.js"></script>
+</head>
+<body>
+
+    <div id="example-team-timezones" class="team-timezones"></div>
+
+    <script id="widget-template" type="text/x-handlebars-template">
+        {{#each team}}
+        <div class="member">
+            <div class="avatar">
+                <img src="{{avatar}}" alt="Team member's avatar">
+            </div>
+
+            {{#each hours}}
+            <div class="hour{{#if is_business_hours}} business-hours{{/if}}{{#if is_current}} current-hour{{/if}}">
+                <span class="inner">{{label}}</span>
+            </div>
+            {{/each}}
+        </div>
+        {{/each}}
+    </script>
+
+    <script>
+        var app;
+
+        jQuery(function ($) {
+            app = new TeamTimezoneWidget({
+                "el": $("#example-team-timezones")[0],
+                "api_key": "<Your-Google-Timezone-API-Key>",
+                "url": "/test-data.json",
+                "templates": {
+                    "widget": Handlebars.compile($("#widget-template").html())
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

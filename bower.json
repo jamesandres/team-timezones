@@ -1,0 +1,25 @@
+{
+  "name": "TeamTimezones",
+  "version": "0.0.1",
+  "authors": [
+    "James Andres"
+  ],
+  "description": "A widget for viewing team working hours at a glance.",
+  "main": "dist/app.js",
+  "license": "MIT, Copyright (c) 2014 James Andres.",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "dist/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "handlebars": "~2.0.0-alpha.2",
+    "animate.css": "~3.1.0",
+    "lodash": "~2.4.1"
+  }
+}

@@ -1,0 +1,12 @@
+.DS_Store
+Icon
+Thumbs.db
+.bundle
+.sass-cache
+*.sublime-project
+*.sublime-workspace
+._*
+
+
+node_modules
+dist/libs

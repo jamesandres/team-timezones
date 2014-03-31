@@ -1,0 +1,60 @@
+@import "variables";
+
+html {
+    width: 100%;
+    box-model: border-box;
+}
+body {
+    background-color: $background-color;
+    width: 100%;
+}
+
+
+.team-timezones {
+    display: table;
+    border-spacing: 0.2em;
+    border-collapse: separate;
+
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    .member {
+        display: table-row;
+
+        .avatar {
+            width: 2.5em;
+            height: 2.5em;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .avatar,
+        .hour {
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+            width: 2.5em;
+            height: 2.5em;
+        }
+
+        .hour {
+            .inner {
+                display: inline-block;
+                vertical-align: middle;
+                line-height: 1em;
+            }
+
+            background-color: #cccccc;
+
+            &.business-hours {
+                background-color: #ffcc66;
+            }
+            &.current-hour {
+                background-color: #0080ff;
+                color: #ffffff;
+            }
+        }
+    }
+}

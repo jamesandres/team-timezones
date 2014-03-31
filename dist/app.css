@@ -1,0 +1,38 @@
+html {
+  width: 100%;
+  box-model: border-box; }
+
+body {
+  background-color: #f9f9f9;
+  width: 100%; }
+
+.team-timezones {
+  display: table;
+  border-spacing: 0.2em;
+  border-collapse: separate;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  .team-timezones .member {
+    display: table-row; }
+    .team-timezones .member .avatar {
+      width: 2.5em;
+      height: 2.5em;
+      overflow: hidden; }
+      .team-timezones .member .avatar img {
+        width: 100%; }
+    .team-timezones .member .avatar, .team-timezones .member .hour {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+      width: 2.5em;
+      height: 2.5em; }
+    .team-timezones .member .hour {
+      background-color: #cccccc; }
+      .team-timezones .member .hour .inner {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 1em; }
+      .team-timezones .member .hour.business-hours {
+        background-color: #ffcc66; }
+      .team-timezones .member .hour.current-hour {
+        background-color: #0080ff;
+        color: #ffffff; }
