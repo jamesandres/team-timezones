@@ -58,3 +58,14 @@ body {
         }
     }
 }
+
+@for $i from 1 through 59 {
+    &.minute-#{$i} {
+        background: -webkit-linear-gradient(
+            left,
+            #0080ff,
+            #0080ff percentage($i/60),
+            lighten(#0080ff, 15%) percentage($i/60),
+            lighten(#0080ff, 15%)) !important;
+    }
+}

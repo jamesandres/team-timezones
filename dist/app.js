@@ -15,6 +15,7 @@
       this.utc_ts = new Date().getTime();
       this.local_timezone_offset = -1 * (new Date().getTimezoneOffset()) * 60 * 1000;
       if (this.ready) {
+        this.calculate_hours();
         this.render(animated);
       }
       callback = (function(_this) {
@@ -117,6 +118,7 @@
             _results1.push(member.hours.push({
               label: label,
               hour: hour,
+              minute: hour === current_hour ? current_minute : 0,
               is_business_hours: hour >= 9 && hour <= 17,
               is_current: hour === current_hour
             }));

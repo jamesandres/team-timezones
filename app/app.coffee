@@ -29,6 +29,7 @@ class TeamTimezoneWidget
         @local_timezone_offset = -1 * (new Date().getTimezoneOffset()) * 60 * 1000
 
         if @ready
+            @calculate_hours()
             @render(animated)
 
         # Redraw every 30 seconds
@@ -107,6 +108,7 @@ class TeamTimezoneWidget
                 member.hours.push
                     label: label
                     hour: hour
+                    minute: if hour == current_hour then current_minute else 0
                     # TODO: Proper business hours.
                     is_business_hours: hour >= 9 and hour <= 17
                     is_current: hour == current_hour
