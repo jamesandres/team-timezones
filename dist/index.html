@@ -39,9 +39,12 @@
         var app;
 
         jQuery(function ($) {
+            var matches = location.search.match(/api_key=([^&]+)/),
+                api_key = matches ? matches[1] : false;
+
             app = new TeamTimezoneWidget({
                 "el": $("#example-team-timezones")[0],
-                "api_key": "<Your-Google-Timezone-API-Key>",
+                "api_key": api_key || "<Your-Google-Timezone-API-Key>",
                 "url": "/test-data.json",
                 "templates": {
                     "widget": Handlebars.compile($("#widget-template").html())
