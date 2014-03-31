@@ -4,7 +4,7 @@
     <title>Team Timezones</title>
 
     <link rel=stylesheet href="app.css">
-    <link rel=stylesheet href="/libs/animate.css/animate.css">
+    <link rel=stylesheet href="/libs/csshake/css/csshake.css">
 
     <script src="/libs/jquery/dist/jquery.js"></script>
     <script src="/libs/handlebars/handlebars.js"></script>
@@ -24,7 +24,7 @@
             </div>
 
             {{#each hours}}
-            <div class="hour{{#if is_business_hours}} business-hours{{/if}}{{#if is_current}} current-hour{{/if}}{{#if minute}} minute-{{minute}}{{/if}}">
+            <div class="hour{{#if is_working}} business-hours{{/if}}{{#if is_current}} current-hour{{/if}}{{#if minute}} minute-{{minute}}{{/if}}">
                 <span class="inner">{{label}}</span>
             </div>
             {{/each}}

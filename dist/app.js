@@ -92,7 +92,7 @@
     };
 
     TeamTimezoneWidget.prototype.calculate_hours = function() {
-      var current_hour, current_minute, hour, i, label, member, raw_hour, start, _i, _len, _ref, _results;
+      var business_hours, current_dow, current_hour, current_minute, hour, i, is_working, label, member, raw_hour, start, _i, _len, _ref, _results;
       _ref = this.team;
       _results = [];
       for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
@@ -101,6 +101,8 @@
         start = Math.floor(member.timezone_offset / 60 / 60 / 1000);
         current_hour = this.utc_hour_offset_by(member.timezone_offset);
         current_minute = this.utc_minute_offset_by(member.timezone_offset);
+        current_dow = this.utc_day_of_week_offset_by(member.timezone_offset);
+        business_hours = member.business_hours[current_dow];
         _results.push((function() {
           var _j, _results1;
           _results1 = [];
@@ -115,11 +117,17 @@
             } else {
               label = hour;
             }
+            is_working = false;
+            if (business_hours) {
+              if (hour >= business_hours[0] && hour <= business_hours[1]) {
+                is_working = true;
+              }
+            }
             _results1.push(member.hours.push({
               label: label,
               hour: hour,
               minute: hour === current_hour ? current_minute : 0,
-              is_business_hours: hour >= 9 && hour <= 17,
+              is_working: is_working,
               is_current: hour === current_hour
             }));
           }
@@ -155,14 +163,24 @@
       return "" + months[d.getUTCMonth()] + " " + (d.getUTCDate());
     };
 
+    TeamTimezoneWidget.prototype.utc_day_of_week_offset_by = function(offset) {
+      var d;
+      d = this.utc_ts_offset_by(offset);
+      return (d.getUTCDay() - 1) % 7;
+    };
+
     TeamTimezoneWidget.prototype.render = function(animated) {
-      var effect;
+      var callback, effect;
       $(this.config.el).html(this.config.templates.widget(this));
       if (animated) {
-        effect = 'flash';
-        return $(this.config.el).addClass("animated " + effect).one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
-          return $(this).removeClass("animated " + effect);
-        });
+        effect = "shake shake-constant";
+        $('.current-hour', this.config.el).addClass(effect);
+        callback = (function(_this) {
+          return function() {
+            return $('.current-hour', _this.config.el).removeClass(effect);
+          };
+        })(this);
+        return setTimeout(callback, 500);
       }
     };
 

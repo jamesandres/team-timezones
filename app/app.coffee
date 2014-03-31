@@ -92,6 +92,8 @@ class TeamTimezoneWidget
             start = Math.floor(member.timezone_offset / 60 / 60 / 1000)
             current_hour = @utc_hour_offset_by(member.timezone_offset)
             current_minute = @utc_minute_offset_by(member.timezone_offset)
+            current_dow = @utc_day_of_week_offset_by(member.timezone_offset)
+            business_hours = member.business_hours[current_dow]
 
             for i in [0...23]
                 raw_hour = i + start
@@ -105,12 +107,17 @@ class TeamTimezoneWidget
                 else
                     label = hour
 
+                is_working = false
+                if business_hours
+                    if hour >= business_hours[0] and hour <= business_hours[1]
+                        is_working = true
+
                 member.hours.push
                     label: label
                     hour: hour
                     minute: if hour == current_hour then current_minute else 0
                     # TODO: Proper business hours.
-                    is_business_hours: hour >= 9 and hour <= 17
+                    is_working: is_working
                     is_current: hour == current_hour
 
     utc_ts_offset_by: (offset) ->
@@ -131,14 +138,22 @@ class TeamTimezoneWidget
         d = @utc_ts_offset_by(offset)
         return "#{months[d.getUTCMonth()]} #{d.getUTCDate()}"
 
+    # Day of the week with Monday as day zero
+    utc_day_of_week_offset_by: (offset) ->
+        d = @utc_ts_offset_by(offset)
+        return (d.getUTCDay() - 1) % 7
+
     render: (animated) ->
         $(@config.el).html(@config.templates.widget(@));
 
         if animated
-            effect = 'flash'
-            $(@config.el)
-                .addClass("animated #{effect}")
-                .one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",
-                     -> $(@).removeClass("animated #{effect}"))
+            effect = "shake shake-constant"
+            $('.current-hour', @config.el)
+                .addClass(effect)
+
+            callback = =>
+                $('.current-hour', @config.el).removeClass(effect)
+
+            setTimeout(callback, 500)
 
 window.TeamTimezoneWidget = TeamTimezoneWidget

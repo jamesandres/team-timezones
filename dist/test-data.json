@@ -4,19 +4,19 @@
             "name": "London",
             "avatar": "https://upload.wikimedia.org/wikipedia/commons/4/41/Underground.svg",
             "location": "51.5229965,-0.0871299",
-            "business_hours": [[9, 18], [9, 18], [9, 18], [9, 18], [9, 18], null, null]
+            "business_hours": [[9, 17], [9, 17], [9, 17], [9, 17], [9, 17], null, null]
         },
         {
             "name": "NYC",
             "avatar": "https://upload.wikimedia.org/wikipedia/commons/3/39/Seal_of_New_York_City.svg",
             "location": "40.7401412,-73.9924649",
-            "business_hours": [[9, 18], [9, 18], [9, 18], [9, 18], [9, 18], null, null]
+            "business_hours": [[9, 17], [9, 17], [9, 17], [9, 17], [9, 17], null, null]
         },
         {
             "name": "James Andres",
             "avatar": "https://secure.gravatar.com/avatar/48465cfbbab1f906a3a99a99b835b310",
             "location": "49.2569777,-123.123904",
-            "business_hours": [[9, 18], null, [9, 18], null, [9, 18], null, null]
+            "business_hours": [[9, 17], null, [9, 17], null, [9, 17], null, null]
         }
     ]
 }
