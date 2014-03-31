@@ -77,11 +77,18 @@
     };
 
     TeamTimezoneWidget.prototype.update_member_timezone = function(member, data) {
+      var hours;
       if ((data != null) && (data.status != null) && data.status === 'OK') {
         data.dstOffset *= 1000;
         data.rawOffset *= 1000;
         member.timezone = data;
-        return member.timezone_offset = data.dstOffset + data.rawOffset;
+        member.timezone_offset = data.dstOffset + data.rawOffset;
+        hours = Math.floor(member.timezone_offset / 60 / 60 / 1000);
+        if (hours > 0) {
+          return member.timezone_offset_hours = "+" + hours;
+        } else {
+          return member.timezone_offset_hours = "" + hours;
+        }
       } else {
         return member.timezone = false;
       }

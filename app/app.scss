@@ -6,6 +6,7 @@ html {
 }
 body {
     background-color: $background-color;
+    color: $text-color;
     width: 100%;
 }
 
@@ -20,23 +21,27 @@ body {
     .member {
         display: table-row;
 
-        .avatar {
-            width: 2.5em;
-            height: 2.5em;
-            overflow: hidden;
-
-            img {
-                width: 100%;
-            }
-        }
-
+        .timezone,
         .avatar,
         .hour {
             display: table-cell;
+            overflow: hidden;
             text-align: center;
             vertical-align: middle;
             width: 2.5em;
             height: 2.5em;
+        }
+
+        .timezone {
+            width: inherit;
+            text-align: right;
+            padding-right: 1em;
+        }
+
+        .avatar {
+            img {
+                width: 100%;
+            }
         }
 
         .hour {

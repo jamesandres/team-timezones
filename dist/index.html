@@ -19,6 +19,9 @@
     <script id="widget-template" type="text/x-handlebars-template">
         {{#each team}}
         <div class="member">
+            <div class="timezone">
+                UTC{{timezone_offset_hours}}
+            </div>
             <div class="avatar">
                 <img src="{{avatar}}" alt="Team member's avatar">
             </div>

@@ -78,6 +78,13 @@ class TeamTimezoneWidget
 
             member.timezone = data
             member.timezone_offset = data.dstOffset + data.rawOffset
+
+            hours = Math.floor(member.timezone_offset / 60 / 60 / 1000)
+
+            if hours > 0
+                member.timezone_offset_hours = "+" + hours
+            else
+                member.timezone_offset_hours = "" + hours
         else
             # TODO: Log this error!
             member.timezone = false
